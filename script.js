@@ -14,16 +14,16 @@ new Vue({
       this.turns = [];
     },
     attack() {
-      let damage = this.calcDamage(3, 10);
-      this.monsterHealth -= damage;
-      this.turns.unshift({
-        isPlayer: true,
-        text: "Player Hits Computer for" + damage,
-      });
-      if (this.checkWin()) {
-        return;
-      }
-      this.monsterAttacks();
+        let damage = this.calcDamage(3, 10);
+        this.monsterHealth -= damage;
+        this.turns.unshift({
+          isPlayer: true,
+          text: "Player Hits Computer for" + damage,
+        });
+        if (this.checkWin()) {
+          return;
+        }
+        this.monsterAttacks();
     },
     specialAttack() {
       var damage = this.calcDamage(10, 20);
