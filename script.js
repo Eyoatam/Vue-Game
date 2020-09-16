@@ -2,7 +2,7 @@ new Vue({
   el: "#app",
   data: {
     playerHealth: 100,
-    monsterHealth: 100,
+    computerHealth: 100,
     gameIsRunning: false,
     turns: [],
   },
@@ -10,12 +10,12 @@ new Vue({
     startGame() {
       this.gameIsRunning = true;
       this.playerHealth = 100;
-      this.monsterHealth = 100;
+      this.computerHealth = 100;
       this.turns = [];
     },
     attack() {
         let damage = this.calcDamage(3, 10);
-        this.monsterHealth -= damage;
+        this.computerHealth -= damage;
         this.turns.unshift({
           isPlayer: true,
           text: "Player Hits Computer for" + damage,
@@ -27,7 +27,7 @@ new Vue({
     },
     specialAttack() {
       var damage = this.calcDamage(10, 20);
-      this.monsterHealth -= damage;
+      this.computerHealth -= damage;
       this.turns.unshift({
         isPlayer: true,
         text: "Player Hits Hard Computer for" + damage,
@@ -65,7 +65,7 @@ new Vue({
       return Math.max(Math.floor(Math.random() * max) + 1, min);
     },
     checkWin() {
-      if (this.monsterHealth <= 0) {
+      if (this.computerHealth <= 0) {
         if (confirm("You won! New game?")) {
           this.startGame();
         } else {
